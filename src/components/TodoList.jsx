@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import { addTodo } from "../stores/todo-slice";
+import { Button, Form, InputGroup, Table } from "react-bootstrap";
 
 import TodoItem from "./TodoItem";
 
 export default function TodoList() {
   const [input, setInput] = useState("");
   const { todos } = useSelector((state) => state.todos);
+  const { dark } = useSelector((state) => state.thema);
 
   const dispatch = useDispatch();
 
@@ -32,20 +34,45 @@ export default function TodoList() {
   return (
     <div className="todo-list">
       <form onSubmit={handleTodos} action="">
-        <input
-          type="text"
-          value={input}
-          onChange={(e) => {
-            setInput(e.target.value);
-          }}
-          placeholder="add todos.."
-        />
-        <button type="submit">Add Todo</button>
+        <InputGroup className="mb-3">
+          <Form.Control
+            placeholder="add todos.."
+            aria-label="Recipient's username"
+            aria-describedby="basic-addon2"
+            onChange={(e) => {
+              setInput(e.target.value);
+            }}
+            value={input}
+          />
+          <Button
+            type="submit"
+            variant={dark ? "secondary" : "primary"}
+            id="button-addon2"
+          >
+            Add Todo
+          </Button>
+        </InputGroup>
       </form>
 
-      {todos.map((todo, i) => (
-        <TodoItem todo={todo} i={i} />
-      ))}
+      {todos.length > 0 ? (
+        <Table
+          striped
+          bordered
+          hover
+          size="sm"
+          variant={dark ? "" : "secondary"}
+        >
+          <thead>
+            <tr>
+              <th>#</th>
+              <th colSpan={2}>Todos</th>
+            </tr>
+          </thead>
+          {todos.map((todo, i) => (
+            <TodoItem todo={todo} i={i} />
+          ))}
+        </Table>
+      ) : null}
     </div>
   );
 }

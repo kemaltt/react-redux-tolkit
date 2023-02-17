@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { deleteTodo } from "../stores/todo-slice";
 import { openModal } from "../stores/modal-slice";
+import { Button, Table } from "react-bootstrap";
 
 export default function TodoItem({ todo, i }) {
   const dispatch = useDispatch();
@@ -21,7 +22,31 @@ export default function TodoItem({ todo, i }) {
 
   return (
     <>
-      <div
+      <tbody key={i}>
+        <tr>
+          <td>{i + 1}</td>
+          <td
+            style={{
+              width: "250px",
+              textAlign: "left",
+              textDecoration: todo.done ? "line-through" : "",
+            }}
+          >
+            {" "}
+            {todo.title}
+          </td>
+          <td>
+            <Button onClick={delTodo} variant="danger" size="sm">
+              Delete
+            </Button>
+            <Button onClick={editHandle} variant="warning" size="sm">
+              Edit
+            </Button>
+          </td>
+        </tr>
+      </tbody>
+
+      {/* <div
         className="todo-item"
         key={i}
         style={{
@@ -30,16 +55,28 @@ export default function TodoItem({ todo, i }) {
           alignItems: "center",
         }}
       >
-        <p> {i + 1}-</p>
-        <p style={{ textDecoration: todo.done ? "line-through" : "" }}>
-          {todo.title}
-        </p>
+        <div
+          style={{
+            display: "flex",
+
+            alignItems: "center",
+          }}
+        >
+          <p> {i + 1}-</p>
+          <p style={{ textDecoration: todo.done ? "line-through" : "" }}>
+            {todo.title}
+          </p>
+        </div>
 
         <div className="buttons">
-          <button onClick={delTodo}>delete</button>
-          <button onClick={editHandle}>Edit</button>
+          <Button onClick={delTodo} variant="danger" size="sm">
+            Delete
+          </Button>
+          <Button onClick={editHandle} variant="success" size="sm">
+            Edit
+          </Button>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }

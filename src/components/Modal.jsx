@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { closeModal } from "../stores/modal-slice";
 import { editTodo } from "../stores/todo-slice";
+import { Button } from "react-bootstrap";
 
 export default function Modal() {
   const dispatch = useDispatch();
@@ -30,35 +31,41 @@ export default function Modal() {
     dispatch(closeModal());
   };
   return (
-    <div className="modal-container">
-      <div className="modal-inner">
-        <form onSubmit={submitHandle} action="">
-          <input
-            type="text"
-            placeholder={data.title}
-            value={todo}
-            onChange={(e) => setTodo(e.target.value)}
-          />
-          <br />
-          <label htmlFor="">
+    <>
+      <div className="modal-container">
+        <div className="modal-inner">
+          <form onSubmit={submitHandle} action="">
             <input
-              type="checkbox"
-              checked={done}
-              onChange={(e) => setDone(e.target.checked)}
+              type="text"
+              placeholder={data.title}
+              value={todo}
+              onChange={(e) => setTodo(e.target.value)}
             />
-            Done
-          </label>
-          <br />
+            <br />
+            <label htmlFor="">
+              <input
+                type="checkbox"
+                checked={done}
+                onChange={(e) => setDone(e.target.checked)}
+              />
+              Done
+            </label>
+            <br />
 
-          <div
-            style={{ display: "flex", justifyContent: "space-between" }}
-            className="buttons"
-          >
-            <button type="submit">Edit</button>
-            <button onClick={close}>Close</button>
-          </div>
-        </form>
+            <div
+              style={{ display: "flex", justifyContent: "space-between" }}
+              className="buttons"
+            >
+              <Button type="submit" variant="warning">
+                Edit
+              </Button>
+              <Button onClick={close} variant="secondary">
+                Close
+              </Button>
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

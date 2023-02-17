@@ -6,27 +6,27 @@
 
 .App {
   height: 100vh;
-  background-color: #dddd;
+  /* background-color: #dddd; */
 }
 
-nav {
+/* nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1vh 3%;
-}
-
+} */
+/* 
 .nav_item_desktop {
   margin: 0;
   padding: 0;
-}
+} */
 
-nav ul {
+/* nav ul {
   display: flex;
   gap: 1rem;
   align-items: center;
   list-style: none;
-}
+} */
 
 .register_container {
   width: 50%;
@@ -51,7 +51,7 @@ nav ul {
 }
 
 .todo-list {
-  width: 50%;
+  max-width: 400px;
   margin: 2vh auto;
   text-align: center;
 }
