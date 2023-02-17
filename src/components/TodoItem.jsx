@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { deleteTodo } from "../stores/todo-slice";
 import { openModal } from "../stores/modal-slice";
-import { Button, Table } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 
 export default function TodoItem({ todo, i }) {
   const dispatch = useDispatch();

@@ -1,14 +1,14 @@
 import React from "react";
-import "./App.css";
+import "./assets/css/App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
 import TablePage from "./pages/TablePage";
 import Login from "./auth/Login";
 import Register from "./auth/Register";
-import "bootstrap/dist/css/bootstrap.min.css";
 import Todos from "./pages/Todos";
 import { useSelector } from "react-redux";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   const { isAuthenticated } = useSelector((state) => state.users);

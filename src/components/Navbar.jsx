@@ -1,11 +1,15 @@
 import React from "react";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { MdDarkMode } from "react-icons/md";
 import { useSelector, useDispatch } from "react-redux";
 import { setDark, setLight } from "../stores/thema";
 import { logout } from "../stores/auth-slice";
+import { FaUserFriends } from "react-icons/fa";
+import { FcTodoList } from "react-icons/fc";
+import { HiHome } from "react-icons/hi";
+import { IoLogInSharp } from "react-icons/io5";
 
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
@@ -48,20 +52,45 @@ export default function Navigation({ isLogin, setIsLogin }) {
         >
           Redux Tolkit
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
+        <Navbar.Toggle aria-controls="responsive-navbar-nav " />
+        <Navbar.Collapse className="" id="responsive-navbar-nav ">
           <Nav className="me-auto"></Nav>
           <Nav>
-            <Nav.Link onClick={() => navigate("/")}>Home</Nav.Link>
-            <Nav.Link onClick={() => navigate("/todos")}>Todos</Nav.Link>
-            <Nav.Link onClick={() => navigate("/table")}>User Table</Nav.Link>
+            <Nav.Link
+              className="d-flex align-items-center mx-2  gap-1"
+              onClick={() => navigate("/")}
+            >
+              {" "}
+              <HiHome />
+              Home
+            </Nav.Link>
+            <Nav.Link
+              className="d-flex align-items-center mx-2 gap-1"
+              onClick={() => navigate("/todos")}
+            >
+              {" "}
+              <FcTodoList /> Todos
+            </Nav.Link>
+            <Nav.Link
+              className="d-flex align-items-center mx-2  gap-1"
+              onClick={() => navigate("/table")}
+            >
+              {" "}
+              <FaUserFriends /> Users
+            </Nav.Link>
 
             {isAuthenticated ? (
-              <Nav.Link>
+              <Nav.Link className="d-flex align-items-center mx-2 gap-1">
                 <LogoutIcon onClick={handleLogOut} color="light" />
               </Nav.Link>
             ) : (
-              <Nav.Link onClick={() => navigate("/login")}>Login</Nav.Link>
+              <Nav.Link
+                className="d-flex align-items-center mx-2 gap-1"
+                onClick={() => navigate("/login")}
+              >
+                {" "}
+                <IoLogInSharp /> Login
+              </Nav.Link>
             )}
             <Nav.Link>
               <MdDarkMode

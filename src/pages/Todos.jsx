@@ -14,10 +14,7 @@ export default function Todos() {
   const [todo, setTodo] = useState(data.title);
   const dispatch = useDispatch();
   console.log(open);
-  const [show, setShow] = useState(false);
-
   const handleClose = () => dispatch(closeModal());
-  const handleShow = () => setShow(true);
   const submitHandle = (e) => {
     e.preventDefault();
 
